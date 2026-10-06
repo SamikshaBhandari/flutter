@@ -21,13 +21,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _weightInKgController = TextEditingController();
+  final TextEditingController _heightInKgController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: const Text("BMI Calculator")),
       body: Container(
-        padding: EdgeInsets.only(top: 16),
-        color: const Color.fromARGB(255, 209, 207, 207),
+        padding: EdgeInsets.all(16),
+        color: const Color.fromARGB(255, 77, 208, 226),
         width: double.maxFinite,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +38,9 @@ class _HomePageState extends State<HomePage> {
           spacing: 12,
           children: [
             Text("Calculate your BMI", style: TextStyle(fontSize: 30)),
+
             TextField(
+              controller: _weightInKgController,
               decoration: InputDecoration(
                 hintText: "Enter your weight in kg",
                 labelText: "Weight(kg)",
@@ -44,6 +49,25 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
+            TextField(
+              controller: _heightInKgController,
+              decoration: InputDecoration(
+                hintText: "Enter your height in kg",
+                labelText: "Height(kg)",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+
+            SizedBox(
+              width: double.maxFinite,
+              child: FilledButton(onPressed: () {}, child: Text("Calculate")),
+            ),
+            ElevatedButton(onPressed: () {}, child: Text("Calculate")),
+            OutlinedButton(onPressed: () {}, child: Text("Calculate")),
+            IconButton(onPressed: () {}, icon: Icon(Icons.calculate)),
           ],
         ),
       ),
