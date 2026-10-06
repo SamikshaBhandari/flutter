@@ -107,4 +107,15 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  String getBMICategory(double bmi) {
+    if (bmi <= 18.5) {
+      return "underweight";
+    } else if (bmi > 18.5 && bmi <= 24.5) {
+      return "Normal";
+    } else if (bmi > 24.5 && bmi <= 29.5) {
+      return "OverWeight";
+    }
+    return "Obese";
+  }
 }
