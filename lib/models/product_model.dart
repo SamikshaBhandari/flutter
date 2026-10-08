@@ -10,11 +10,18 @@ class Product {
     required this.imagepath,
     required this.price,
   });
-  List<Product> products = [
+  static List<Product> products = [
     Product(
       id: "1",
-      title: "Iphone 15",
-      imagepath: "assets\nature.jpg",
+      title: "View",
+      imagepath: "assets/nature.jpg",
+      price: 10000,
+    ),
+
+    Product(
+      id: "1",
+      title: "Lion",
+      imagepath: "https://tse1.mm.bing.net/th/id/OIP.VHrrZ5rVN4xig1TS0PE0lwHaLH?r=0&pid=ImgDet&w=189&h=283&c=7&o=7&rm=3",
       price: 110000,
     ),
   ];
