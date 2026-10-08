@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/product_model.dart';
+import 'package:my_app/pages/detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,51 +25,57 @@ class HomePage extends StatelessWidget {
           return Card(
             elevation: 3,
             margin: const EdgeInsets.only(bottom: 16),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      height: 150,
-                      child: product.imagepath.startsWith('http')
-                          ? Image.network(
-                              product.imagepath,
-                              fit: BoxFit.contain,
-                            )
-                          : Image.asset(
-                              product.imagepath,
-                              fit: BoxFit.contain,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(Icons.image, size: 50),
-                            ),
-                    ),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailPage(product: product),
                   ),
-
-                  const SizedBox(height: 10),
-
-                  Text(
-                    product.title,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        height: 150,
+                        child: product.imagepath.startsWith('http')
+                            ? Image.network(
+                                product.imagepath,
+                                fit: BoxFit.contain,
+                              )
+                            : Image.asset(
+                                product.imagepath,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(Icons.image, size: 50),
+                              ),
+                      ),
                     ),
-                  ),
-
-                  const SizedBox(height: 4),
-
-                  Text(
-                    "Rs. ${product.price}",
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.green,
-                      fontWeight: FontWeight.w600,
+                    const SizedBox(height: 10),
+                    Text(
+                      product.title,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 4),
+                    Text(
+                      "Rs. ${product.price}",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.green,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
